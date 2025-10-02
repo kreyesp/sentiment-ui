@@ -43,8 +43,12 @@ export default function Home() {
       }
       const data: PredictResponse = await res.json();
       setResult(data);
-    } catch (e: any) {
-      setError(e.message ?? "Request failed");
+    } catch (e: unknown) {
+    const msg =
+      e instanceof Error ? e.message :
+      typeof e === "string" ? e :
+      JSON.stringify(e);
+    setError(msg || "Request failed");
     } finally {
       setLoading(false);
     }
