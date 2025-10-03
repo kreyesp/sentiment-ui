@@ -1,17 +1,11 @@
 @import "tailwindcss";
 
+/* Color tokens driven by user color scheme */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  color-scheme: light dark;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +13,35 @@
   }
 }
 
+/* Tailwind v4 inline theme: hook fonts/colors into tokens */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Base polish */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+
+/* Let Tailwind utilities control fonts/colors via tokens */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Remove the hardcoded Arial so Tailwind's font-sans (Geist) wins */
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optional: selection color */
+::selection {
+  background: rgba(99, 102, 241, 0.25); /* indigo-500/25 */
 }
