@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import ThemeToggle from "@/components/ThemeToggle";
+// import ThemeToggle from "@/components/ThemeToggle";
 
 type PredictResponse = {
   request_id: string;
@@ -89,14 +89,14 @@ export default function Home() {
             <div>
               <h1 className="text-2xl font-semibold tracking-tight">Sentiment Analyzer</h1>
               <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-                Paste a review and click <span className="font-medium">Analyze</span>. First result may take a while to load. Requests go to{" "}
+                Paste a review and click <span className="font-medium">Analyze</span>. First result may take a while to load because of backend boot up. Requests go to{" "}
                 <code className="rounded bg-slate-100 px-1 py-0.5 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
                   {API_BASE}
                 </code>
               </p>
             </div>
           </div>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
         </header>
 
         {/* Input card */}
